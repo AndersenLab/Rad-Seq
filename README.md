@@ -9,7 +9,9 @@ Rad-Seq
 
 #### 2015-07-09
 
-* Added Allele frequency to vcf files and changed
+* Added Allele frequency (AF) to vcf using vcffixup (vcf-lib) files and changed
 format to be `.vcf.gz`
 
+	bcftools view andersen08.ws235.bcf | vcffixup - | bcftools view -O z > andersen08.ws235.vcf.gz && bcftools index andersen08.ws235.vcf.gz 
 	bcftools view andersen08.ws245.bcf | vcffixup - | bcftools view -O z > andersen08.ws245.vcf.gz && bcftools index andersen08.ws245.vcf.gz 
+
