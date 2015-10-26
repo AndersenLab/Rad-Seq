@@ -2,16 +2,10 @@ Rad-Seq
 =======
 
 * __data/__
-	* 41188SNPset.txt - WS210 snp calls in tab-delimited format.
-	* andersen08.ws235.bcf - WS235, lifted over and converted to a bcf format for use with bcftools.
+	* 41188.SNP.WS220.txt - WS220 snp calls in tab-delimited format.
+	* WS220.txt - List of WS220 SNP sites.
+	* WS245.txt - List of WS245 SNP sites.
 * __supporting materials/__ - Contains methods and supplementary methods
 
 
-#### 2015-07-09
-
-* Added Allele frequency (AF) to vcf using vcffixup (vcf-lib) files and changed
-format to be `.vcf.gz`
-
-	bcftools view andersen08.ws235.bcf | vcffixup - | bcftools view -O z > andersen08.ws235.vcf.gz && bcftools index andersen08.ws235.vcf.gz 
-	bcftools view andersen08.ws245.bcf | vcffixup - | bcftools view -O z > andersen08.ws245.vcf.gz && bcftools index andersen08.ws245.vcf.gz 
-
+cat 41188.SNP.WS220.txt | grep -v 'AB' | cut -f 1 | tr '_' '\t' > WS220.txt && liftover WS220.txt 220 245 1 2 > WS245.txt 
